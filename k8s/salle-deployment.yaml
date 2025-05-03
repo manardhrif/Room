@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: salle-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: salle-service
+  template:
+    metadata:
+      labels:
+        app: salle-service
+    spec:
+      containers:
+      - name: salle-service
+        image: salle-service:latest
+        ports:
+        - containerPort: 5001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: salle-service
+spec:
+  selector:
+    app: salle-service
+  ports:
+    - protocol: TCP
+      port: 5001
+      targetPort: 5001

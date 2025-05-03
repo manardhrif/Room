@@ -1,0 +1,5 @@
+flask
+flask-restx
+python-dotenv
+psycopg2-binary
+kafka-python
